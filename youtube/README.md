@@ -41,3 +41,22 @@
 ### sin_port IP port.
 ### sin_addr IP address.
 ### sin_zero Padding to make structure the same size as SOCKADDR. The htons function returns the value in TCP/IP network byte order. 
+
+## Bind Example
+```cpp
+sockaddr_in service;
+service.sin_family = AF_INET;
+InetPton(AF_INET, _T("127.0.0.1"), &service.sin_addr.s_addr);
+service.sin_port = htons(port);
+if (bind(serverSocket, (SOCKADDR*)&service, sizeof(service)) == SOCKET_ERROR) 
+{
+    cout << "bind() failed: << WSAGetLastError() << endl;
+    closesocket(serverSocket);
+    WSACleanup();
+    return 0;
+} 
+else
+{
+    cout << "bind() is OK!" << endl;
+}
+```
