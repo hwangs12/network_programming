@@ -9,6 +9,16 @@
 ### type: The type specification for the new socket (SOCK_STREAM, SOCK_DGRAM)
 ### protocol: The protocol to be used (IPPROTO_TCP for TCP)
 
+## Server Functions (Main Steps)
+
+#### 1. Initialize WSA - WSAStartup().
+#### 2. Create a socket - socket().
+#### 3. Bind the socket - bind().
+#### 4. Listen on the socket - listen().
+#### 5. Accept a connection - accept(), connect().
+#### 6. Send and receive data - recv(), send(), recvfrom(), sendto()
+#### 7. Disconnect - closesocket().
+
 ## Deregister Winsock2 DLL
 ### The WSACleanup function terminates use of the Winsock 2 DLL
 ### The return value is zero if the operation was successful. Otherwise, the value SOCKET_ERROR is returned
