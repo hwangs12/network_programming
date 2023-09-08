@@ -22,3 +22,6 @@
 
 ### DLLs are so much like an exe that the file format itself is the same. Both exe and dlls are based on the portable executable file format. dlls can also contain com components and .NET libraries. 
 
+## Close Socket
+
+### The socket must have previously been opened through a call to socket
