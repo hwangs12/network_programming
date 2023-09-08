@@ -16,6 +16,15 @@
 
 ## Google has some nice [CPP course](https://developers.google.com/edu/c++) which you can scroll through and solve problems. The issue is as you are reaching the end of the course, the some hard concepts are not very motivating to make you solve that problem. Bad excuse, I know, but that was for me. Maybe I will come back later. So, see you later those hard problems. 
 
+## leetcode
+## euler problems
+
+## I am being lazy here, so no link for problem sets. just google.
+
+
+
+
+
 
 
 
