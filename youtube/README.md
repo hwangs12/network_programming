@@ -25,3 +25,12 @@
 ## Close Socket
 
 ### The socket must have previously been opened through a call to socket
+
+## Bind
+
+### Associates a local address with a socket.
+### s: Descriptor identifying an unbound socket
+### name: Address to assign to the socket from the sockaddr structure.
+### socklen: Length in bytes of the address structure.
+### If no error occurs, bind() returns zero. Otherwise, it returns SOCKET_ERROR
+
