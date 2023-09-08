@@ -34,3 +34,10 @@
 ### socklen: Length in bytes of the address structure.
 ### If no error occurs, bind() returns zero. Otherwise, it returns SOCKET_ERROR
 
+## SOCKADDR_IN
+
+### its structure is used by Windows Sockets to specify a local or remote endpoint address to which to connect a socket
+### sin_family Address family (AF_INET)
+### sin_port IP port.
+### sin_addr IP address.
+### sin_zero Padding to make structure the same size as SOCKADDR. The htons function returns the value in TCP/IP network byte order. 
