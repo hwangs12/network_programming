@@ -14,4 +14,11 @@
 ### The return value is zero if the operation was successful. Otherwise, the value SOCKET_ERROR is returned
 ### ```int WSACleanup(void)```
 ### When it has completed the use of Windows Sockets, the application or DLL must call WSACleanup to deregister itself from a Windows Sockets.
-### Multiple applications may share a DLL. Windows tracks the number of applications using each DLL and will only remove the DLL from system memory wen it is no longer required. 
+### Multiple applications may share a DLL. Windows tracks the number of applications using each DLL and will only remove the DLL from system memory when it is no longer required. 
+
+## What is **DLL**
+
+### Dynamic Link Libraries are like exe but they are not directly executable. They are similar to .so files in Linux/Unix. That is to say, DLLs are MS's implementation of shared libraries. 
+
+### DLLs are so much like an exe that the file format itself is the same. Both exe and dlls are based on the portable executable file format. dlls can also contain com components and .NET libraries. 
+
