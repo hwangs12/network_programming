@@ -3,5 +3,5 @@
 class OrderBook
 {
 public:
-    OrderBook(std::string);
+    int orderBook(std::string);
 };

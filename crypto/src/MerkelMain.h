@@ -21,5 +21,7 @@ private:
     void processUserOption(int userOption);
 
     std::string currentTime;
-    OrderBook orderBook("../data/five_symbol_orderbook_v4.csv");
+    OrderBook orderBook(std::string);
+
+    Wallet wallet;
 };
