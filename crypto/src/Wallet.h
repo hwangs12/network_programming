@@ -16,4 +16,5 @@ public:
     std::string toString();
 
 private:
+    std::map<std::string, double> currencies;
 };
