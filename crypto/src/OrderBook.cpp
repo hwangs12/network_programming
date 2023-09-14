@@ -1,7 +1,7 @@
 #include <iostream>
 #include "OrderBook.h"
 
-int OrderBook::orderBook(std::string)
+std::string OrderBook::getEarliestTime()
 {
-    return 5;
+    return "hello earliest time";
 };

@@ -3,5 +3,5 @@
 class OrderBook
 {
 public:
-    int orderBook(std::string);
+    std::string getEarliestTime();
 };

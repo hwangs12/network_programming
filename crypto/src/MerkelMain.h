@@ -21,7 +21,7 @@ private:
     void processUserOption(int userOption);
 
     std::string currentTime;
-    OrderBook orderBook(std::string);
+    OrderBook orderBook;
 
     Wallet wallet;
 };
