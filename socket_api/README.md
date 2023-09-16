@@ -39,3 +39,18 @@
 #### TCP asks the sender to resend any lost data and that places it all into the proper order. 
 
 #### Luckily for you, you are not supposed to handle it all. You are supposed to handle some of it, but not all of it. Specifically, you need not worry about the physical connection. Nor do you need to handle the internet protocol, or the transmission control protocol. 
+
+#### In other words, you do not have to receive the data from the other computer. Well, you do have to ask for it, but that is almost as simple as opening a file.
+
+#### Once you have received the data, it is up to you to figure out what to do with it. In our case, you would need to understand the HTTP protocol and the PNG file structure. 
+
+#### To use an analogy, all the internetworking protocols become gray area: Not so much because we do not understand how it works, but because we are no longer concerned about it. The sockets interface takes care of this gray area for us:
+
+#### We only need to understand any protocols that tell us how to interpret the data, not how to receive it from another process, nor how to send it to another process. 
+
+#### BSD sockets are built on the basic UNIX model: Everything is a file. In our example, then, sockets would let ue receive an HTTP file, so to speak. It would then be up to us to extract the PNG file from it. 
+
+#### Due to the complexity of internetworking, we cannot just use the open system call, or the open() C function. Instead, we need to take several steps to "opening" a socket. 
+
+#### Once we do, however, we can start treating the socket the same way we treat any file descriptor: We can read from it, write to it, pipe it, and, eventually, close it. 
+
