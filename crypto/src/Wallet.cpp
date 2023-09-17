@@ -12,3 +12,8 @@ bool Wallet::containsCurrency(std::string type, double amount)
 {
     return false;
 }
+
+std::string Wallet::toString()
+{
+    return "oink";
+}
