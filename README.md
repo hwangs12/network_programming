@@ -21,6 +21,14 @@
 
 ## I am being lazy here, so no link for problem sets. just google.
 
+### good books additions
+
+#### - book/Computer Networking_ A Top-Down Approach, Global Edition, 8th Edition.pdf
+
+#### - Hands-On-Network-Programming-with-C
+
+### Also try doing hardware NIC, writing NIC driver software - what's the learning path.
+
 
 
 

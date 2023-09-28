@@ -30,9 +30,11 @@
 
 int main()
 {
-
+    // what does ifaddrs struct looks like?
+    // why is it accessing memory address
     struct ifaddrs *addresses;
 
+    // what is getifaddrs function?
     if (getifaddrs(&addresses) == -1)
     {
         printf("getifaddrs call failed\n");
