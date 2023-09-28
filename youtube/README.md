@@ -52,6 +52,9 @@
 ### sin_addr IP address.
 ### sin_zero Padding to make structure the same size as SOCKADDR. The htons function returns the value in TCP/IP network byte order. 
 
+### good youtube by Sloan Kelly Channel
+### [link](https://www.youtube.com/watch?v=cNdlrbZSkyQ&t=368s)
+
 ## Bind Example
 ```cpp
 sockaddr_in service;
