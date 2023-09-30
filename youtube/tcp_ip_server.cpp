@@ -107,6 +107,13 @@ int main()
     recv(clientSocket, buff, BUFF_SIZE, 0);
     printf("    Recv data: %s\n", buff);
 
+    char *MSG_FROM_SERVER = "message from server!";
+
+    if (send(clientSocket, MSG_FROM_SERVER, strlen(MSG_FROM_SERVER), 0) < 0)
+    {
+        printf("send() failed. \n");
+        return -3;
+    }
     // CLOSE
     close(clientSocket);
     close(serverSocket);

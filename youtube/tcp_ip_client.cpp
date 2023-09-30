@@ -6,8 +6,8 @@
 #include <arpa/inet.h>
 #include <unistd.h>
 
-#define SERVER_PORT (80)
-#define SERVER_IP ("142.250.9.101")
+#define SERVER_PORT (7777)
+#define SERVER_IP ("127.0.0.1")
 #define BUFF_SIZE (1024)
 
 int main()
