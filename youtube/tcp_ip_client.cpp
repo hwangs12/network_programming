@@ -6,14 +6,16 @@
 #include <arpa/inet.h>
 #include <unistd.h>
 
-#define SERVER_PORT (7777)
-#define SERVER_IP ("127.0.0.1")
+#define SERVER_PORT (80)
+#define SERVER_IP ("142.250.9.101")
+#define BUFF_SIZE (1024)
 
 int main()
 {
     int clientSocket;
     struct sockaddr_in serverAddr;
-    char *MSG = "Hello~~~~!";
+    char *MSG = "GET / HTTP/1.1\r\n\r\n";
+    char buff[BUFF_SIZE];
 
     printf("Client start \n");
 
@@ -41,6 +43,10 @@ int main()
     }
 
     printf("    Sending completed.\n");
+    recv(clientSocket, buff, BUFF_SIZE, 0);
+
+    printf("%s\n", buff);
+
     close(clientSocket);
     printf("End. \n");
     return 0;
