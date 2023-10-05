@@ -46,6 +46,8 @@
 
 ### Transport layer is responsible for keeping the data from different applications separate on a network layer
 
-### application is identified using port no in case of udp/tcp traffic. network layer & data link layer has no knowledge what application produced the data. All it knows is communicating machines, not applications because there is no information present in their respective headers which represents the application in some way. 
+### application is identified using port no in case of udp/tcp traffic. network layer & data link layer has no knowledge what application produced the data. All it knows is communicating machines, not applications because there is no information present in their respective headers which represents the application in some way.
+
+### tip: The transport layer divides a data stream into segments and may add reliability and flow control information.
 
 
