@@ -39,3 +39,13 @@
 
 ### DATA LINK , TCP LAYER, TRANSPORT LAYER BELONG TO SYSTEM CALL INTERFACE, AND OS.
 
+### system call interface request services of the operating system. For example, malloc does that work. 
+
+### hardware includes cpu, gpu, memory and many other hardwares, os interact with hardware using drivers.
+
+
+### Transport layer is responsible for keeping the data from different applications separate on a network layer
+
+### application is identified using port no in case of udp/tcp traffic. network layer & data link layer has no knowledge what application produced the data. All it knows is communicating machines, not applications because there is no information present in their respective headers which represents the application in some way. 
+
+
