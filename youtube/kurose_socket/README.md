@@ -63,3 +63,36 @@ Client contacts server by:
 Application viewpoint
 Tcp provides reliable, in-order byte-stream transfer between client and server processes
 
+# Client/server socket interaction: TCP
+
+server (running on hostid) 
+- create socket,
+port=x, for incoming request
+serverSocket = socket()
+
+server then invokes wait for incoming connection request
+connectionSocket = serverSocket.accept()
+
+client
+- create socket,
+connect to hostid, port=x
+clientSocket = socket()
+then connection is set up 
+via transport layer
+
+client send request using clientsocket
+
+server read request from connectionsocket
+then write reply to connectionSocket
+
+client read reply from client socket
+closed clientsocket
+
+closed serversocket
+**server side app uses this newly created socket to accept not the listening socket to communicate with client**
+
+
+
+
+
+
