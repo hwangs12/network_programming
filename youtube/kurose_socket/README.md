@@ -60,3 +60,6 @@ Client contacts server by:
 - allows server to talk with multiple clients
 - source port numbers used to distinguish clients 
 
+Application viewpoint
+Tcp provides reliable, in-order byte-stream transfer between client and server processes
+
