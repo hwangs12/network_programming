@@ -57,10 +57,7 @@ int main()
         return -4;
     }
 
-    // Close the listening socket
-    close(listening);
-
-    memset(host, 0, NI_MAXHOST);
+        memset(host, 0, NI_MAXHOST);
     memset(svc, 0, NI_MAXSERV);
 
     int result = getnameinfo((sockaddr *)&client, sizeof(client), host, NI_MAXHOST, svc, NI_MAXSERV, 0);
@@ -102,6 +99,8 @@ int main()
         send(clientSocket, buf, bytesRecv + 1, 0);
     }
 
+    // Close the listening socket
+    close(listening);
     // Close socket
     close(clientSocket);
 
