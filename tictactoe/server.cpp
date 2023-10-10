@@ -56,8 +56,10 @@ int main()
         cerr << "Problem with client connecting!";
         return -4;
     }
+    // Close the listening socket
+    close(listening);
 
-        memset(host, 0, NI_MAXHOST);
+    memset(host, 0, NI_MAXHOST);
     memset(svc, 0, NI_MAXSERV);
 
     int result = getnameinfo((sockaddr *)&client, sizeof(client), host, NI_MAXHOST, svc, NI_MAXSERV, 0);
@@ -71,13 +73,15 @@ int main()
         inet_ntop(AF_INET, &client.sin_addr, host, NI_MAXHOST);
         cout << host << " connected on " << ntohs(client.sin_port) << endl;
     }
-
     // While receiving display message, echo message
     char buf[4096];
+    // send the client the board
+    char *buf2 = "message sent";
     while (true)
     {
         // clear the buffer
         memset(buf, 0, 4096);
+        memset(buf2, 0, 4096);
         // wait for a message
         int bytesRecv = recv(clientSocket, buf, 4096, 0);
         if (bytesRecv == -1)
@@ -97,10 +101,9 @@ int main()
 
         // resend message
         send(clientSocket, buf, bytesRecv + 1, 0);
+        send(clientSocket, buf2, strlen(buf2), 0);
     }
 
-    // Close the listening socket
-    close(listening);
     // Close socket
     close(clientSocket);
 

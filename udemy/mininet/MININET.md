@@ -8,7 +8,12 @@ We can write any network application and deploy on mininet. Same applicaion can 
 
 After this tutorial, I will be able to
 1. deploy network topologies quickly
-2. configure - 1.2 routing, 1.3 routing, vlan based routing, inter vlan routing
+2. configure - l2 routing, l3 routing, vlan based routing, inter vlan routing
 3. develop networking based projects and applications using sockets
 4. network packet capture and debugging
 5. write socket program and applications and test them on topologies
+
+pre-requisites
+1. basic knowledge of osi model
+2. virtualization software - i use vmware workstation player
+3. 

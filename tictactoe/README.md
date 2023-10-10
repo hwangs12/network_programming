@@ -8,4 +8,6 @@
 
 ## Board is 3x3 and will be labeled with column value, A, B, C and row value 1, 2, 3, so A1 is the top left corner of the board, for example. 
 
+## once done, can I let multiple clients connect to the server?
+
 
