@@ -15,4 +15,9 @@ int main()
     /* syntactically nothing wrong but you will get error favorite_number is used uninitialized in this function */
 }
 ```
+
+## LINKER ERRORS
+### The linker is having trouble linking all the object files together to create an executable
+### usually there is a library or object file that is missing
+
 ## scope and global variables
