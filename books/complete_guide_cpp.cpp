@@ -39,4 +39,8 @@ int main()
     /* DEFINING VARIABLES */
 
     /* A variable must be defined before you can use it in a program. When you define a variable the type is specified and an appropriate amount of memory reserved. This memory space is addressed by reference to the name of the variable. A simple definition has the following syntax: */
+
+    /* INITIALIZATION */
+
+    /*  */
 }
