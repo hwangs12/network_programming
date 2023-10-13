@@ -40,67 +40,90 @@ int main()
         return -3;
     }
 
-    // Accept a call
-    sockaddr_in client;
-    socklen_t clientSize = sizeof(client);
-    char host[NI_MAXHOST];
-    char svc[NI_MAXSERV];
+    fd_set master;
+    FD_ZERO(&master);
 
-    int clientSocket = accept(listening, (sockaddr *)&client, &clientSize);
+    FD_SET(listening, &master);
 
-    if (clientSocket == -1)
-    {
-        cerr << "Problem with client connecting!";
-        return -4;
-    }
-
-    // Close the listening socket
-    close(listening);
-
-    memset(host, 0, NI_MAXHOST);
-    memset(svc, 0, NI_MAXSERV);
-
-    int result = getnameinfo((sockaddr *)&client, sizeof(client), host, NI_MAXHOST, svc, NI_MAXSERV, 0);
-
-    if (result)
-    {
-        cout << host << " connected on " << svc << endl;
-    }
-    else
-    {
-        inet_ntop(AF_INET, &client.sin_addr, host, NI_MAXHOST);
-        cout << host << " connected on " << ntohs(client.sin_port) << endl;
-    }
-
-    // While receiving display message, echo message
-    char buf[4096];
     while (true)
     {
-        // clear the buffer
-        memset(buf, 0, 4096);
-        // wait for a message
-        int bytesRecv = recv(clientSocket, buf, 4096, 0);
-        if (bytesRecv == -1)
+        fd_set copy = master;
+
+        int socketCount = select(0, &copy, nullptr, nullptr, nullptr);
+
+        for (int i = 0; i < socketCount; i++)
         {
-            cerr << "There was a connection issue" << endl;
-            break;
+            SOCKET sock = copy.fd_array[i];
+            if (sock == listening)
+            {
+                // Accept a new connection
+            }
+            else
+            {
+                // Accept a new message
+            }
         }
-
-        if (bytesRecv == 0)
-        {
-            cout << "The client disconnected" << endl;
-            break;
-        }
-
-        // display message
-        cout << "Received: " << string(buf, 0, bytesRecv) << endl;
-
-        // resend message
-        send(clientSocket, buf, bytesRecv + 1, 0);
     }
 
-    // Close socket
-    close(clientSocket);
-
     return 0;
+    // Close socket
+    // close(clientSocket);
+    // Accept a call
+    // sockaddr_in client;
+    // socklen_t clientSize = sizeof(client);
+    // char host[NI_MAXHOST];
+    // char svc[NI_MAXSERV];
+
+    // int clientSocket = accept(listening, (sockaddr *)&client, &clientSize);
+
+    // if (clientSocket == -1)
+    // {
+    //     cerr << "Problem with client connecting!";
+    //     return -4;
+    // }
+
+    // // Close the listening socket
+    // close(listening);
+
+    // memset(host, 0, NI_MAXHOST);
+    // memset(svc, 0, NI_MAXSERV);
+
+    // int result = getnameinfo((sockaddr *)&client, sizeof(client), host, NI_MAXHOST, svc, NI_MAXSERV, 0);
+
+    // if (result)
+    // {
+    //     cout << host << " connected on " << svc << endl;
+    // }
+    // else
+    // {
+    //     inet_ntop(AF_INET, &client.sin_addr, host, NI_MAXHOST);
+    //     cout << host << " connected on " << ntohs(client.sin_port) << endl;
+    // }
+
+    // // While receiving display message, echo message
+    // char buf[4096];
+    // while (true)
+    // {
+    //     // clear the buffer
+    //     memset(buf, 0, 4096);
+    //     // wait for a message
+    //     int bytesRecv = recv(clientSocket, buf, 4096, 0);
+    //     if (bytesRecv == -1)
+    //     {
+    //         cerr << "There was a connection issue" << endl;
+    //         break;
+    //     }
+
+    //     if (bytesRecv == 0)
+    //     {
+    //         cout << "The client disconnected" << endl;
+    //         break;
+    //     }
+
+    //     // display message
+    //     cout << "Received: " << string(buf, 0, bytesRecv) << endl;
+
+    //     // resend message
+    //     send(clientSocket, buf, bytesRecv + 1, 0);
+    // }
 }
