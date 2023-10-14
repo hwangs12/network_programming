@@ -50,5 +50,33 @@ There are two widely used address domains, the *unix* domain, in which two proce
 
 The address of a socket in the Unix domain is a character string which is basically an entry in the file system.
 
-The address of a socket in the Internet domain consists of the Internet
+The address of a socket in the Internet domain consists of the Internet address of the host machine (every computer on the Internet has a unique 32 bit address, often referred to as its IP address).
+
+In addition, each socket needs a port number on that host.
+
+Port numbers are 16 bit unsigned integers.
+
+The lower numbers are reserved in Unix for standard services. 
+
+For example, the port number for the FTP server is 21. 
+
+It is important that standard services be at the same port on all computers so that clients will know their addresses.
+
+However, port numbers above 2000 are generally available. 
+
+There are two widely used socket types, stream sockets, and datagram sockets. 
+
+Stream sockets treat communications as a continuous stream of characters, 
+
+while datagram sockets have to read entier messages at once. 
+
+Each uses its own communications protocol.
+
+Stream sockets use TCP, which is a reliable, stream oriented protocol, 
+
+which is unreliable and message oriented.
+
+The examples in this tutorial will use sockets in the Internet domain using the TCP protocol.
+
+[Go to Sample Code](SAMPLE_CODE.md)
 
