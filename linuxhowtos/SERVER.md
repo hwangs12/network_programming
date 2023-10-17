@@ -43,5 +43,57 @@ int main(int argc, char *argv[])
 `n` is the return value for the `read()` and `write()` calls; i.e. it contains the number of *characters* read or written. 
 ___
 
+```cpp
+char buffer[256];
+```
+
+The server reads characters from the socket connection into this buffer
+___
+
+```cpp
+struct sockaddr_in serv_addr, cli_addr;
+```
+
+A `sockaddr_in` is a structure containing an internet address. This structure is defined in `netinet/in.h`.
+
+Here is the definition:
+
+```cpp
+struct sockaddr_in
+{
+    short   sin_family; // must be AF_INET
+    u_short sin_port;
+    struct  in_addr sin_addr;
+    char    sin_zero[8]; // not used, must be zero
+}
+```
+
+An `in_addr` structure, defined in the same header file, contains only one field, a unsigned long called `s_addr`.
+
+The variable `serv_addr` will contain the address of the server, and `cli_addr` will contain the address of the client which connects to the server. 
+___
+
+```cpp
+if (argc < 2)
+{
+    fprintf(stderr, "ERROR, no port provided");
+    exit(1);
+}
+```
+
+The user needs to pass in the port number on which the server will accept connections as an argument. This code displays an error message if the user fails to do this. 
+___
+
+```cpp
+sockfd = socket(AF_INET, SOCK_STREAM, 0);
+if (sockfd < 0)
+{
+    error("ERROR opening socket");
+}
+```
+
+
+
+
 
 
