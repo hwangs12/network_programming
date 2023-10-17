@@ -92,6 +92,20 @@ if (sockfd < 0)
 }
 ```
 
+The `socket()` system call creates a new socket. It takes three arguments. The first is the address domain of the socket. 
+
+Recall that there are two possible address domains, the unix domain for two processes which share a common file system, and the Internet domain for any two processes which share a common file system, and the Internet domain for any two hosts on the Internet. The symbol constant AF_UNIX is used for the former, and AF_INET for the latter (there are actually many other options which can be used here for specialized purposes).
+
+The second argument is the type of socket. Recall that there are two choices here, a stream socket in which characters are read in a coninuous stream as if from a file or pipe, and a datagram socket, in which messages are read in chunks. The two symbolic constants are `SOCK_STREAM` and `SOCK_DGRAM`.
+
+The third argument is the protocol. If this argument is zero (and it always should be except for unusual circumstances), the operating system will choose the most appropriate protocol. It will choose TCP for stream sockets and UDP for datagram sockets. 
+
+
+
+
+
+
+
 
 
 
