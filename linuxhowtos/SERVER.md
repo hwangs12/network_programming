@@ -100,7 +100,11 @@ The second argument is the type of socket. Recall that there are two choices her
 
 The third argument is the protocol. If this argument is zero (and it always should be except for unusual circumstances), the operating system will choose the most appropriate protocol. It will choose TCP for stream sockets and UDP for datagram sockets. 
 
+The socket system call returns an entry into the file descriptor table (i.e. a small integer). This value is used for all subsequent references to this socket. If the socket call fails, it returns -1. 
 
+In this case the program displays an error message and exits. However, this system call is unlikely to fail.
+
+This is a simplified description of the socket call; there are numerous other choices for domains and types, but these are the most common.
 
 
 
