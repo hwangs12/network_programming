@@ -106,6 +106,39 @@ In this case the program displays an error message and exits. However, this syst
 
 This is a simplified description of the socket call; there are numerous other choices for domains and types, but these are the most common.
 
+```cpp
+bzero((char *) &serv_addr, sizeof(serv_addr));
+```
+
+The function bzero() sets all values in a buffer to zero. It takes two arguments, the first is a pointer to the buffer and the second is the size of the buffer. Thus, this line initializes serv_addr to zeros. 
+
+```cpp
+portno = atois(argv[1]);
+```
+
+The port number on which the server will listen for connections is passed in as an argument, and this statement uses the atoi() function to convert this from a string of digits to an integer.
+
+```cpp
+serv_addr.sin_family = AF_INET;
+```
+
+The variable `serv_addr` is a structure of type `struct sockaddr_in`. This structure has four fields. The first field is `short sin_family` which contains a code for the address family. It should always be set to the symbolic constant AF_INET.
+
+```cpp
+serv_addr.sin_port = htons(portno);
+```
+
+The second field of `serv_addr` is `unsigned short sin_port`, which contains the port number. However, instead of simply copying the port number to this field, it is necessary to convert this to network byte order using the function `htons()` which converts a port number in host byte order to a port number in network byte order. 
+
+```cpp
+if (bind(sockfd, (strct sockaddr *) &serv_addr, error("ERROR on binding")));
+```
+
+The `bind()` system call binds a socket to an address, in this case the address of the current host and port number on which the server will run. It takes three arguments, the socket file descriptor, the address to which is bound, and the size of the address to which it is bound. The second argument is a pointer to a structure of type `sockaddr`, but what is passed in is a structure of type `sockaddr_in`, and so this must be cast to the correct type. This can failf or a number of reasons, the most obvious being that this socket is already in use on this machine. 
+
+
+
+
 
 
 
