@@ -136,7 +136,11 @@ if (bind(sockfd, (strct sockaddr *) &serv_addr, error("ERROR on binding")));
 
 The `bind()` system call binds a socket to an address, in this case the address of the current host and port number on which the server will run. It takes three arguments, the socket file descriptor, the address to which is bound, and the size of the address to which it is bound. The second argument is a pointer to a structure of type `sockaddr`, but what is passed in is a structure of type `sockaddr_in`, and so this must be cast to the correct type. This can failf or a number of reasons, the most obvious being that this socket is already in use on this machine. 
 
+```cpp
+listen(sockfd, 5);
+```
 
+The `listen` system call allows the process to listen on the socket for connections. The first argument is the socket file descriptor, and the second is the size of the backlog queue, i.e., the number of connections that can be waiting while the process is handling a particular connection. this should be set to 5, the maximum size permitted by most systems. If the first argument is a valid socket, this call cannot fail, and so the code doesn't check for errors.
 
 
 
