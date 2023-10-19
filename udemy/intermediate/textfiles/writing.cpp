@@ -27,3 +27,5 @@ int main()
         cerr << "oops the file was not open" << endl;
     }
 }
+
+/* CAN I USE SOCKET TO EXCHANGE FILES? */
