@@ -45,3 +45,54 @@ It defines a host computer on the Internet. The mbmers of this structure are:
 > `h_length`    The length, in bytes, of the address.
 > `h_addr_list` A pointer to a list of network addresses for the named host. Host addresses are returned in network byte order. 
 
+Note that `h_addr` is an alias for the first address in the array of network addresses. 
+
+```cpp
+server = gethostbyname(argv[1]);
+if (server == NULL)
+{
+    fprintf(stderr, "ERROR, no such host");
+    exit(0);
+}
+```
+
+The variable `argv[1]` contains the name of a host on the Internet, e.g. `cs.rpi.edu`. The function:
+
+```cpp
+struct hostent *gethostbyname(char *name)
+```
+Takes such a name as an argument and returns a pointer to a `hostent` containing information about that host.
+
+The field `char *h_addr` contains the IP address.
+
+If this structure is NULL, the system could not locate a host with this name. 
+
+In the old days, this function worked by searching a system file called `/etc/hosts` but with the explosive growth of the Internet, it became impossible for system administrators to keep this file current. Thus, the mechanism by which this function works is complex, often involves querying large databases all around the country.
+
+___
+
+```cpp
+bzero((char *) &serv_addr, sizeof(serv_addr));
+serv_addr.sin_family = AF_INET;
+bcopy((char *) server -> h_addr,
+        (char *) &serv_addr.sin_addr.s_addr, 
+        server -> h_length);
+serv_addr.sin_port = htons(portno);
+```
+
+This code sets the fields in `serv_addr`. Much of it is the same as in the server. However, because the field `server->h_addr` is a character string, we use the function:
+
+```cpp
+void bcopy(char *s1, char *s2, int length)
+```
+
+which copies `length` bytes from `s1` to `s2`.
+
+```cpp
+if (connect(sockfd, &serv_addr, sizeof(serv_addr)) < 0)
+{
+    error("ERROR connecting");
+}
+```
+
+The `connect` function is called by the client to establish a connection to the server. It takes three arguments, the socket file descriptor, the address of the host to which it wants to connect, and the size of this address. This function returns 0 on success and -1 if it fails. 
