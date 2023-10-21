@@ -24,7 +24,6 @@ int main()
     while (input)
     {
         getline(input, line, ':');
-        cout << line << endl;
         int population;
         input >> population;
 
