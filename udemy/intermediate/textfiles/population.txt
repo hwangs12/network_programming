@@ -1,2 +1,2 @@
-population ny: 640000
-population paris: 644000
+population UK:640000
+population France:644000
