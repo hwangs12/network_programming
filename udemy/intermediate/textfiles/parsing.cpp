@@ -20,9 +20,10 @@ int main()
         return 1;
     }
 
-    string line;
     while (input)
     {
+        string line;
+        /* this call will read all the data from the buffer into input  up to and including the first ':' character it encounters. The stream then moves the pointer to the first element in the buffer after that ':'. character. */
         getline(input, line, ':');
         int population;
         input >> population;
@@ -36,7 +37,7 @@ int main()
         }
 
         cout << "'" << line << "'"
-             << " -- " << population << "'" << endl;
+             << " -- '" << population << "'" << endl;
     }
 
     input.close();
