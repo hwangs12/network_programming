@@ -19,10 +19,15 @@ int main()
         return 1;
     }
     string content;
+    int intContent;
     while (fileStream)
     {
+        // file stream will read through strings up to the first whitespace it finds and exit
         fileStream >> content;
+        // file stream will continue to read through the numbers all the way through the first whitespace it finds
+        fileStream >> intContent;
         cout << content;
+        cout << intContent;
     }
     cout << endl;
 
