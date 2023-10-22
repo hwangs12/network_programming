@@ -31,10 +31,10 @@ int main()
         // input.get();
         input >> ws;
 
-        if (!input)
-        {
-            break;
-        }
+        // if (!input)
+        // {
+        //     break;
+        // }
 
         cout << "'" << line << "'"
              << " -- '" << population << "'" << endl;

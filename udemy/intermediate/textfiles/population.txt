@@ -1,2 +1,2 @@
-population77 UK:640000
+population UK:640000
 population France:644000
