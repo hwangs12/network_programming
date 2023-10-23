@@ -22,6 +22,7 @@ int main()
 
     if (outputFile.is_open())
     {
+        outputFile.write(reinterpret_cast<char *>(&someone), sizeof(Person));
         outputFile.close();
     }
     else
