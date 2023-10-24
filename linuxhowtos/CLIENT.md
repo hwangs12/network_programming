@@ -96,3 +96,27 @@ if (connect(sockfd, &serv_addr, sizeof(serv_addr)) < 0)
 ```
 
 The `connect` function is called by the client to establish a connection to the server. It takes three arguments, the socket file descriptor, the address of the host to which it wants to connect, and the size of this address. This function returns 0 on success and -1 if it fails. 
+
+Notice that the client needs to know the port number of the server, but it does not need to know its own port number. This is typically assigned by the system whe `connect` is called. 
+
+```cpp
+printf("Please enter the message: ");
+bzero(bufer, 256);
+fgets(buffer, 255, stdin);
+n = write(sockfd, buffer, strlen(buffer));
+if (n < 0)
+{
+    error("ERROR writing to socket");
+}
+bzero(buffer, 256);
+n = read(sockfd, buffer, 255);
+if (n < 0)
+{
+    error("ERROR reading from socket");
+}
+printf("%s", buffer);
+return 0;
+```
+
+The remaining code should be fairly clear. It prompts the user to enter a message, uses `fgets` to read the message from stdin, writes the message to the socket, reads the reply from the socket, and displays this reply on the screen.
+
