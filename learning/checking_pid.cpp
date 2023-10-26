@@ -6,10 +6,10 @@
 int main(int argc, char *argv[])
 {
     int id = fork();
-    id = fork();
-    for (int i = 0; i < 100; i++)
+    if (id != 0)
     {
-        printf("Hello world from id: %d\n", id);
+        fork();
     }
+    printf("hello world!");
     return 0;
 }
