@@ -9,8 +9,9 @@ int main()
     int capacity = numbers.capacity();
     cout << "Capacity: " << capacity << endl;
 
-    for (int i = 0; i < 100; i++)
+    for (int i = 0; i < 1000; i++)
     {
+        cout << numbers.capacity() << " vs " << capacity << endl;
         if (numbers.capacity() != capacity)
         {
             capacity = numbers.capacity();
@@ -19,6 +20,12 @@ int main()
 
         numbers.push_back(i);
     }
+
+    numbers.reserve(100000);
+    // reserve affects capacity
+    cout << numbers[2] << endl;
+    cout << "Size: " << numbers.size() << endl;
+    cout << "Capacity: " << numbers.capacity() << endl;
 
     return 0;
 }
