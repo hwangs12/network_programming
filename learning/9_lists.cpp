@@ -18,6 +18,9 @@ int main()
         if (*it == 2)
         {
             numbers.insert(it, 1234);
+            numbers.insert(it, 2234);
+            numbers.erase(it);
+            // cout << *it << endl;
         }
 
         if (*it == 1)
