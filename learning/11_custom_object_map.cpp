@@ -40,8 +40,10 @@ int main()
     people[32] = Person("Vicky", 30);
     people[1] = Person("Raj", 20);
 
-    people.insert(make_pair(55, Person("Bob", 45)));
-    people.insert(make_pair(55, Person("Sue", 24)));
+    // people.insert(make_pair(55, Person("Bob", 45)));
+    // people.insert(make_pair(57, Person("Sue", 24)));
+
+    make_pair(55, Person("Bob", 45));
 
     for (map<int, Person>::iterator it = people.begin(); it != people.end();
          it++)
