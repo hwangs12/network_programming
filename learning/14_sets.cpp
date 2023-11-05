@@ -16,6 +16,11 @@ public:
     {
         cout << id << ": " << name << endl;
     }
+
+    bool operator<(const Test &other) const
+    {
+        return name < other.name;
+    }
 };
 
 int main()
