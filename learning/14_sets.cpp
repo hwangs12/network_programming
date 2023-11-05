@@ -55,6 +55,9 @@ int main()
     tests.insert(Test(10, "Mike"));
     tests.insert(Test(30, "Joe"));
     tests.insert(Test(20, "Sue"));
+    tests.insert(Test(333, "Aue"));
+    //  with same key value referred in the comparison definition, set just doesn't insert.
+    tests.insert(Test(333, "Sue"));
 
     for (set<Test>::iterator it = tests.begin(); it != tests.end(); it++)
     {
