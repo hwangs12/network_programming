@@ -25,5 +25,15 @@ int main()
         cout << it->first << ": " << it->second << endl;
     }
 
+    // looks up values with same key
+    pair<multimap<string, int>::iterator, multimap<string, int>::iterator> its = lookup.equal_range("Maddoff");
+
+    cout << endl;
+
+    for (multimap<string, int>::iterator it = its.first; it != its.second; it++)
+    {
+        cout << it->first << ": " << it->second << endl;
+    }
+
     return 0;
 }
