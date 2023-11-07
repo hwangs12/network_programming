@@ -13,7 +13,7 @@ public:
 
     ~Test()
     {
-        // cout << "Test destroyed" << endl;
+        cout << "Test destroyed" << endl;
     }
 
     void print()
