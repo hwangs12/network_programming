@@ -22,4 +22,5 @@
  * can directly address one another by their local address.
  * However, any traffic communicated to the internet must undergo address translation by the router.
  * The router does this by modifying the source IP address from the original private LAN IP address to its public internet IP address.
+ * this address translation is done by NAT (network address translation)
  */
