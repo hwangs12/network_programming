@@ -54,5 +54,7 @@ int main(int argc, char *argv[])
         error("ERROR writing to socket");
     close(newsockfd);
     close(sockfd);
+    signal(SIGCHLD, SIG_IGN);
+
     return 0;
 }
