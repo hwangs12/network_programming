@@ -56,5 +56,32 @@ int main()
     struct addrinfo *bind_address;
     getaddrinfo(0, "8080", &hints, &bind_address);
 
+    /* now that we've the local address info, we can create the socket */
+
+    /* It is common to see programs written with socket call first. */
+    /* The problem with this is that it makes the program more complicated as the socket family, type, and protocol must be entered multiple times */
+    /* Structuring our program as we have here is better. */
+
+    printf("Creating socket...\n");
+    SOCKET socket_listen;
+    socket_listen = socket(bind_address->ai_family, bind_address->ai_socktype, bind_address->ai_protocol);
+
+    /* Checking socket call was successful */
+
+    if (!ISVALIDSOCKET(socket_listen))
+    {
+        fprintf(stderr, "socket() failed. (%d) \n", GETSOCKETERRNO());
+        return 1;
+    }
+
+    /* After the socket is created successfully, we can call bind() to associate it with our address from getaddrinfo() */
+
+    printf("Binding socket to local address...\n");
+    if (bind(socket_listen, bind_address->ai_addr, bind_address->ai_addrlen))
+    {
+        fprintf(stderr, "bind() failed. (%d)\n", GETSOCKETERRNO());
+        return 1;
+    }
+
     /* to be continued... */
 }
