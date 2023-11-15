@@ -75,11 +75,22 @@ int main()
     }
 
     /* After the socket is created successfully, we can call bind() to associate it with our address from getaddrinfo() */
+    /* bind returns unsigned int if it fails */
 
     printf("Binding socket to local address...\n");
     if (bind(socket_listen, bind_address->ai_addr, bind_address->ai_addrlen))
     {
         fprintf(stderr, "bind() failed. (%d)\n", GETSOCKETERRNO());
+        return 1;
+    }
+    freeaddrinfo(bind_address);
+
+    /* Once the socket has been created and bound to a local address, we can cause it to start listening for connections with the listen() function: */
+
+    printf("listening...\n");
+    if (listen(socket_listen, 10) < 0)
+    {
+        fprintf(stderr, "listen() failed. (%d)\n", GETSOCKETERRNO());
         return 1;
     }
 
