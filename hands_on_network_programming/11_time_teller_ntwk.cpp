@@ -49,7 +49,7 @@ int main()
     printf("Configuring local address...\n");
     struct addrinfo hints;
     memset(&hints, 0, sizeof(hints));
-    hints.ai_family = AF_INET; // AF_INET6 if you want to accept IPv6 addresses;
+    hints.ai_family = AF_INET6; // AF_INET6 if you want to accept IPv6 addresses;
     hints.ai_socktype = SOCK_STREAM;
     hints.ai_flags = AI_PASSIVE;
 
@@ -73,6 +73,21 @@ int main()
         fprintf(stderr, "socket() failed. (%d) \n", GETSOCKETERRNO());
         return 1;
     }
+
+    /* This is optional to create dual stack that support both ip4 and ipv6.  */
+    /* Note: make sure to set address family as AF_INET6 */
+
+    /* #if !defined(IPV6_V6ONLY)
+    #define IPV6_V6ONLY 27
+    #endif
+
+        int option = 0;
+
+        if (setsockopt(socket_listen, IPPROTO_IPV6, IPV6_V6ONLY, (void *)&option, sizeof(option)))
+        {
+            fprintf(stderr, "setsockopt() failed. (%d)\n", GETSOCKETERRNO());
+            return 1;
+        } */
 
     /* After the socket is created successfully, we can call bind() to associate it with our address from getaddrinfo() */
     /* bind returns unsigned int if it fails */
