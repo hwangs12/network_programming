@@ -94,5 +94,72 @@ int main()
         return 1;
     }
 
-    /* to be continued... */
+    /* After the socket has begun listening for connections, we can accept any incoming connection with the accept() function */
+
+    /* Inside accept there are a few functions. */
+    /* When accept is called, it will block your program until a new connection is made */
+    /* In other words, your program will sleep until a connection is made to the listening socket.  */
+    /* When the new connection is made, accept() will create a new socket for it.  */
+    /* Your original socket continues to listen for new connections, but the new socket returned by accept() can be used to send and receive data over the newly established connection.  */
+    /* accept also fills in address info of the client that connected.  */
+
+    printf("Waiting for connection...\n");
+    struct sockaddr_storage client_address;
+    socklen_t client_len = sizeof(client_address);
+    SOCKET socket_client = accept(socket_listen, (struct sockaddr *)&client_address, &client_len);
+    if (!ISVALIDSOCKET(socket_client))
+    {
+        fprintf(stderr, "accept() failed. (%d)\n", GETSOCKETERRNO());
+        return 1;
+    }
+
+    /* TCP connection has been established to a remote client. We can print the client's address to the console. */
+
+    printf("Client is connected... ");
+    char address_buffer[100];
+    getnameinfo((struct sockaddr *)&client_address, client_len, address_buffer, sizeof(address_buffer), 0, 0, NI_NUMERICHOST);
+    printf("%s\n", address_buffer);
+
+    /* As we are programming a web server, we expect the client (for exapmle, web browser) to send us an HTTP request. We read this request using the recv() function */
+
+    /* check recv() > 0 in production */
+
+    printf("Reading request...\n");
+    char request[1024];
+    int bytes_received = recv(socket_client, request, 1024, 0);
+    printf("Received %.*s bytes.\n", bytes_received, request);
+
+    /* Now that the web browser has sent its request, we can send our response back. */
+
+    printf("Sending response...\n");
+    const char *response =
+        "HTTP/1.1 200 OK \r\n"
+        "Connection: close\r\n"
+        "Content-Type: text/plain\r\n\r\n"
+        "Local time is: ";
+    int bytes_sent = send(socket_client, response, strlen(response), 0);
+    printf("Sent %d of %d bytes.\n", bytes_sent, (int)strlen(response));
+
+    /* Getting local time */
+
+    time_t timer;
+    time(&timer);
+    char *time_msg = ctime(&timer);
+    bytes_sent = send(socket_client, time_msg, strlen(time_msg), 0);
+    printf("Sent %d of %d bytes.\n", bytes_sent, (int)strlen(time_msg));
+
+    /* Close the connection */
+    printf("Closing connection...\n");
+    CLOSESOCKET(socket_client);
+
+    /* Close the listening socket and terminate program */
+    printf("Closing listening socket...\n");
+    CLOSESOCKET(socket_listen);
+
+#if defined(_WIN32)
+    WSACleanup();
+#endif
+
+    printf("Finished.\n");
+    return 0;
 }
