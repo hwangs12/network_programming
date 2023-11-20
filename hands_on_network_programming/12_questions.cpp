@@ -2,8 +2,10 @@
  * QUESTIONS
  *
  * 1. What is a socket?
+ * A: It is a programming interface that allows communication between different OS
  *
  * 2. What is a connectionless protocol?
+ * A: Each data packet is addressed individually. Each data packet is completely independent and unrelated to any packets coming before or after it.
  *
  * 3. What is a connection-oriented protocol?
  *
