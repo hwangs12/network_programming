@@ -15,6 +15,7 @@
  * A graph is a collection of nodes
  * interface has a name, owning node, a wire (a link)
  * example: R0, eth0/0 eth0/4, link_t
+ * link is defined as pair of interfaces
  *
  *
  */
