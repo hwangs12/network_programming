@@ -10,10 +10,11 @@ public:
 
     void displayMembers()
     {
-        while (next)
+        node *t = this;
+        while (t)
         {
-            cout << this->data << endl;
-            this->next = (this->next)->next;
+            cout << t->data << endl;
+            t = t->next;
         }
     }
 };
@@ -42,11 +43,7 @@ int main()
     tail->data = 4;
     tail->next = NULL;
 
-    while (head)
-    {
-        cout << head->data << endl;
-        head = head->next;
-    }
+    head->displayMembers();
 
     return 0;
 }
