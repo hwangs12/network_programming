@@ -17,6 +17,18 @@ public:
             t = t->next;
         }
     }
+
+    void push()
+    {
+    }
+
+    void insert()
+    {
+    }
+
+    void append()
+    {
+    }
 };
 
 int main()
