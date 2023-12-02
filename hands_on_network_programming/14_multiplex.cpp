@@ -12,3 +12,5 @@
  *
  * If other clients were trying to connect, they would have to wait it out.
  */
+
+/* Tomorrow goal : write multiplex using fork and select */
