@@ -14,19 +14,19 @@ int main()
 
     do 
     {
-        std::cout << 
+        std::cout << "Awesome. I am going to shout out ROCK, PAPER, SCISSOR. " << std::endl;
         std::cin >> user_input;
+
+        if (user_input != "ROCK" || user_input != "PAPER" || user_input != "SCISSOR")
+        {
+            std::cout << "The only allowed shot is ROCK, PAPER, SCISSOR. Please try again." << std::endl;
+        }
+        else
+        {
+            std::cout << user_input << " was your shot!" << std::endl;
+        }
     }
     while (game_start != 0)
-
-    if (user_input != "ROCK" || user_input != "PAPER" || user_input != "SCISSOR")
-    {
-        std::cout << "The only allowed shot is ROCK, PAPER, SCISSOR. Please try again." << std::endl;
-    }
-    else
-    {
-        std::cout << user_input << " was your shot!" << std::endl;
-    }
 
 
     return 0;
