@@ -26,7 +26,7 @@ int main()
             std::cout << user_input << " was your shot!" << std::endl;
         }
     }
-    while (game_start != 0)
+    while (game_start != 0);
 
 
     return 0;
