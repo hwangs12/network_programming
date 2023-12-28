@@ -25,9 +25,13 @@ int main()
         {
             std::cout << user_input << " was your shot!" << std::endl;
         }
+        std::cin.clear();
+        std::cin.ignore(256, '\n');
     }
     while (game_start != 0);
 
+
+    std::cout << "It was pleasure to meet you. See you next time!" << std::endl;
 
     return 0;
 }
