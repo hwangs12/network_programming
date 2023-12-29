@@ -3,7 +3,7 @@
 
 int main()
 {
-    
+    enum Game {ROCK, PAPER, SCISSOR};
     std::string user_input;
     int game_start;
     std::cout << "Hello there. Let's start the game. " << std::endl;
@@ -14,7 +14,7 @@ int main()
 
     do 
     {
-        std::cout << "Awesome. I am going to shout out ROCK, PAPER, SCISSOR. " << std::endl;
+        std::cout << "Awesome. I am going to shout out ROCK, PAPER, SCISSOR." << std::endl;
         std::cin >> user_input;
 
         if (user_input != "ROCK" || user_input != "PAPER" || user_input != "SCISSOR")
