@@ -24,9 +24,11 @@ int main()
         else
         {
             std::cout << user_input << " was your shot!" << std::endl;
+            std::cout << "Do you want to continue? Press 1 to continue the game Press 0 to exit" << std::endl;
+            std::cin >> game_start;
         }
         std::cin.clear();
-        std::cin.ignore(256, '\n');
+        std::cin.ignore();
     }
     while (game_start != 0);
 
