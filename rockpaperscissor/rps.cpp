@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <limits>
 
 int main()
 {
@@ -28,7 +29,7 @@ int main()
             std::cin >> game_start;
         }
         std::cin.clear();
-        std::cin.ignore();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
     }
     while (game_start != 0);
 
