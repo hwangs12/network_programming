@@ -15,6 +15,8 @@ int main()
 
     do 
     {
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
         std::cout << "Awesome. I am going to shout out ROCK, PAPER, SCISSOR." << std::endl;
         std::cin >> user_input;
 
