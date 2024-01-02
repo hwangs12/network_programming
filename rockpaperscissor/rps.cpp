@@ -32,6 +32,7 @@ int main()
         }
         std::cin.clear();
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
+        std::cin >> user_input;
     }
     while (game_start != 0);
 
