@@ -1,6 +1,13 @@
 #include <iostream>
 #include <string>
 #include <limits>
+#include <chrono>
+#include <thread>
+#include <sstream>
+
+using namespace std::this_thread;     // sleep_for, sleep_until
+using namespace std::chrono_literals; // ns, us, ms, s, h, etc.
+using std::chrono::system_clock;
 
 int main()
 {
@@ -13,11 +20,27 @@ int main()
     std::cout << "Do you want to continue? Press 1 to start the game Press 0 to exit" << std::endl;
     std::cin >> game_start;
 
+
+
     do 
     {
         std::cin.clear();
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
-        std::cout << "Awesome. I am going to shout out ROCK, PAPER, SCISSOR." << std::endl;
+        std::cout << "Awesome. I am going to shout out ROCK, PAPER, SCISSOR. PICK YOURS!" << std::endl;
+        sleep_for(1s);
+        std::cout << "ROCK" << std::endl;
+        sleep_for(1s);
+        std::cout << "PAPER" << std::endl;
+        sleep_for(1s);
+        std::cout << "SCISSOR" << std::endl;
+
+
+        std::ostringstream oss{};
+        oss << std::cin.rdbuf();
+        std::string all_chars{oss.str()};
+        std::cout << all_chars;
+        break;
+
         std::cin >> user_input;
 
         if (user_input != "ROCK" || user_input != "PAPER" || user_input != "SCISSOR")
