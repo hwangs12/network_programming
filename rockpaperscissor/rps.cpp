@@ -35,13 +35,14 @@ int main()
         std::cout << "SCISSOR" << std::endl;
 
 
+
+        std::cin >> user_input;
+        
         std::ostringstream oss{};
         oss << std::cin.rdbuf();
         std::string all_chars{oss.str()};
         std::cout << all_chars;
         break;
-
-        std::cin >> user_input;
 
         if (user_input != "ROCK" || user_input != "PAPER" || user_input != "SCISSOR")
         {
