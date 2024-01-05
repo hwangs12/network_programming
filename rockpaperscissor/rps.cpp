@@ -35,18 +35,13 @@ int main()
         std::cout << "SCISSOR!" << std::endl;
 
         std::cout << "waiting 5 seconds for response..." << std::endl;
-        sleep_for(5s);
-
-
         std::cin >> user_input;
-        
-        std::ostringstream oss{};
-        oss << std::cin.rdbuf();
-        std::string all_chars{oss.str()};
-        std::cout << all_chars;
-        break;
 
-        if (user_input != "ROCK" || user_input != "PAPER" || user_input != "SCISSOR")
+        int kaka = user_input == "ROCK";
+
+        std::cout << kaka << std::endl;
+
+        if (user_input != "ROCK" && user_input != "PAPER" && user_input != "SCISSOR")
         {
             std::cout << "The only allowed shot is ROCK, PAPER, SCISSOR. Please try again." << std::endl;
         }
@@ -54,7 +49,10 @@ int main()
         {
             std::cout << user_input << " was your shot!" << std::endl;
             std::cout << "Do you want to continue? Press 1 to continue the game Press 0 to exit" << std::endl;
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
             std::cin >> game_start;
+            continue;
         }
         std::cin.clear();
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
