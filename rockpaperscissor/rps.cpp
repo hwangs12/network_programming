@@ -28,12 +28,14 @@ int main()
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
         std::cout << "Awesome. I am going to shout out ROCK, PAPER, SCISSOR. PICK YOURS!" << std::endl;
         sleep_for(1s);
-        std::cout << "ROCK" << std::endl;
+        std::cout << "ROCK!" << std::endl;
         sleep_for(1s);
-        std::cout << "PAPER" << std::endl;
+        std::cout << "PAPER!" << std::endl;
         sleep_for(1s);
-        std::cout << "SCISSOR" << std::endl;
+        std::cout << "SCISSOR!" << std::endl;
 
+        std::cout << "waiting 5 seconds for response..." << std::endl;
+        sleep_for(5s);
 
 
         std::cin >> user_input;
